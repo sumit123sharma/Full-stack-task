@@ -1,0 +1,57 @@
+<div class="container mt-4">
+    <h2>Tasks</h2>
+    <a routerLink="/projects/{{projectId}}/tasks/new" class="btn btn-success mb-3" *ngIf="isAdmin">Create Task</a>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">To Do</div>
+          <div class="card-body" cdkDropList [cdkDropListData]="todo" (cdkDropListDropped)="drop($event, 'to-do')">
+            <div class="card mb-2" *ngFor="let task of todo" cdkDrag>
+              <div class="card-body">
+                <h5>{{ task.title }}</h5>
+                <p>{{ task.description }}</p>
+                <p>Priority: {{ task.priority }}</p>
+                <p>Due: {{ task.dueDate | date:'shortDate' }}</p>
+                <a routerLink="/projects/{{projectId}}/tasks/edit/{{task._id}}" class="btn btn-sm btn-warning" *ngIf="isAdmin">Edit</a>
+                <button (click)="deleteTask(task._id!)" class="btn btn-sm btn-danger" *ngIf="isAdmin">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">In Progress</div>
+          <div class="card-body" cdkDropList [cdkDropListData]="inProgress" (cdkDropListDropped)="drop($event, 'in-progress')">
+            <div class="card mb-2" *ngFor="let task of inProgress" cdkDrag>
+              <div class="card-body">
+                <h5>{{ task.title }}</h5>
+                <p>{{ task.description }}</p>
+                <p>Priority: {{ task.priority }}</p>
+                <p>Due: {{ task.dueDate | date:'shortDate' }}</p>
+                <a routerLink="/projects/{{projectId}}/tasks/edit/{{task._id}}" class="btn btn-sm btn-warning" *ngIf="isAdmin">Edit</a>
+                <button (click)="deleteTask(task._id!)" class="btn btn-sm btn-danger" *ngIf="isAdmin">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">Done</div>
+          <div class="card-body" cdkDropList [cdkDropListData]="done" (cdkDropListDropped)="drop($event, 'done')">
+            <div class="card mb-2" *ngFor="let task of done" cdkDrag>
+              <div class="card-body">
+                <h5>{{ task.title }}</h5>
+                <p>{{ task.description }}</p>
+                <p>Priority: {{ task.priority }}</p>
+                <p>Due: {{ task.dueDate | date:'shortDate' }}</p>
+                <a routerLink="/projects/{{projectId}}/tasks/edit/{{task._id}}" class="btn btn-sm btn-warning" *ngIf="isAdmin">Edit</a>
+                <button (click)="deleteTask(task._id!)" class="btn btn-sm btn-danger" *ngIf="isAdmin">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

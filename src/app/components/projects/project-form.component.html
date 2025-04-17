@@ -1,0 +1,35 @@
+<div class="container mt-4">
+    <h2>{{ isEdit ? 'Edit' : 'Create' }} Project</h2>
+    <form (ngSubmit)="save()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="project.name" name="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" [(ngModel)]="project.description" name="description"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input type="date" class="form-control" id="startDate" [(ngModel)]="project.startDate" name="startDate" required>
+      </div>
+      <div class="mb-3">
+        <label for="dueDate" class="form-label">Due Date</label>
+        <input type="date" class="form-control" id="dueDate" [(ngModel)]="project.dueDate" name="dueDate" required>
+      </div>
+      <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-select" id="status" [(ngModel)]="project.status" name="status">
+          <option value="open">Open</option>
+          <option value="in-progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="teamMembers" class="form-label">Team Members (comma-separated IDs)</label>
+        <input type="text" class="form-control" id="teamMembers" [(ngModel)]="project.teamMembers" name="teamMembers">
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+      <a routerLink="/projects" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+  </div>

@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "~bootstrap/scss/bootstrap.scss";
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  transition: all 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 0.9rem;
+  }
+}

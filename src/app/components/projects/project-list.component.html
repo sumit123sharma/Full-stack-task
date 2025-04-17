@@ -1,0 +1,45 @@
+<div class="container mt-4">
+    <h2>Projects</h2>
+    <div class="row mb-3" *ngIf="isAdmin">
+      <div class="col-md-4">
+        <label for="statusFilter" class="form-label">Filter by Status</label>
+        <select class="form-select" id="statusFilter" [(ngModel)]="filters.status" (change)="loadProjects()">
+          <option value="">All</option>
+          <option value="open">Open</option>
+          <option value="in-progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="teamMemberFilter" class="form-label">Filter by Team Member</label>
+        <input type="text" class="form-control" id="teamMemberFilter" [(ngModel)]="filters.teamMember" (input)="loadProjects()">
+      </div>
+    </div>
+    <a routerLink="/projects/new" class="btn btn-success mb-3">Create Project</a>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Due Date</th>
+            <th *ngIf="isAdmin">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of projects">
+            <td>{{ project.name }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.status }}</td>
+            <td>{{ project.dueDate | date:'shortDate' }}</td>
+            <td *ngIf="isAdmin">
+              <a routerLink="/projects/{{project._id}}/tasks" class="btn btn-sm btn-info">Tasks</a>
+              <a routerLink="/projects/edit/{{project._id}}" class="btn btn-sm btn-warning">Edit</a>
+              <button (click)="deleteProject(project._id!)" class="btn btn-sm btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

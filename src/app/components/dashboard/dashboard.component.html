@@ -1,0 +1,38 @@
+<div class="container mt-4">
+    <h2>Dashboard</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header">Project Summary</div>
+          <div class="card-body">
+            <p>Open: {{ getProjectSummary().open }}</p>
+            <p>In Progress: {{ getProjectSummary().inProgress }}</p>
+            <p>Completed: {{ getProjectSummary().completed }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header">Task Summary</div>
+          <div class="card-body">
+            <p>To Do: {{ getTaskSummary().todo }}</p>
+            <p>In Progress: {{ getTaskSummary().inProgress }}</p>
+            <p>Done: {{ getTaskSummary().done }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header">Upcoming Deadlines</div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let task of upcomingDeadlines">
+                {{ task.title }} - Due: {{ task.dueDate | date:'shortDate' }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a routerLink="/projects" class="btn btn-primary">Manage Projects</a>
+  </div>

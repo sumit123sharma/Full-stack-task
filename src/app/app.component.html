@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="authService.getToken()">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Project Management</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/projects">Projects</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
